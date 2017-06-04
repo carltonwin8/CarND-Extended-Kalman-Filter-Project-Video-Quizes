@@ -1,5 +1,6 @@
 add_executable(l5kalmanFilterEqVid6 l5kalmanFilterEqVid6.cpp)
 add_executable(l5kalmanFilterEqVid18 l5kalmanFilterEqVid18.cpp)
+add_executable(l5kalmanFilterEqVid22 l5kalmanFilterEqVid22.cpp)
 add_executable(tests tests.cpp)
 include_directories(./)
 add_executable(l5kalmanFilterEqVid12 l5kalmanFilterEqVid12.cpp tracking.cpp kalman_filter.h kalman_filter.cpp)

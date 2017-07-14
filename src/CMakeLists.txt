@@ -7,3 +7,4 @@ add_executable(l5kalmanFilterEqVid12 l5kalmanFilterEqVid12.cpp tracking.cpp kalm
 add_executable(l7ukf_v14 l7ukf_v14.cpp ukf.cpp ukf.h)
 add_executable(l7ukf_v17 l7ukf_v17.cpp ukf17.cpp ukf17.h)
 add_executable(l7ukf_v20 l7ukf_v20.cpp ukf20.cpp ukf20.h)
+add_executable(l7ukf_v23 l7ukf_v23.cpp ukf23.cpp ukf23.h)

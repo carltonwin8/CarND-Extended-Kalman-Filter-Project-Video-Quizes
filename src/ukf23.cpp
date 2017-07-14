@@ -56,17 +56,23 @@ void UKF::PredictMeanAndCovariance(VectorXd* x_out, MatrixXd* P_out) {
   //set weights
   //predict state mean
   //predict state covariance matrix
+  x.fill(0.0);
+  P.fill(0.0);
   for (int i=0; i < 2*n_aug+1; i++) {
     double w;
     w = 1/(lambda + n_aug);
     w = i ? w /= 2 : w *= lambda;
+    weights(i) = w;
     x += w*Xsig_pred.col(i);
   }
   for (int i=0; i < 2*n_aug+1; i++) {
-    double w;
-    w = 1/(lambda + n_aug);
-    w = i ? w /= 2 : w *= lambda;
-    P += w*(Xsig_pred.col(i)-x)*(Xsig_pred.col(i) - x).transpose();
+    // state difference
+    VectorXd x_diff = Xsig_pred.col(i) - x;
+    //angle normalization
+    while (x_diff(3)> M_PI) x_diff(3)-=2.*M_PI;
+    while (x_diff(3)<-M_PI) x_diff(3)+=2.*M_PI;
+
+    P +=  weights(i) * x_diff * x_diff.transpose() ;
   }
 
 /*******************************************************************************
